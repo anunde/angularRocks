@@ -1,0 +1,21 @@
+<form [formGroup] = "formulario" (ngSubmit)="onSubmit()" class="form-container">
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title class="card-title">Agregar Banda de Rock</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field appearance="fill" class="form-group">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="form-group">
+                <mat-label>Descripción</mat-label>
+                <textarea matInput formControlName="descripcion" class="description-area"></textarea>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary">Guardar</button>
+            <button mat-raised-button color="warn">Volver</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
