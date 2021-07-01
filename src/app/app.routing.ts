@@ -1,12 +1,21 @@
-import { ModuleWithProviders } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { FormularioComponent } from './formulario/formulario.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { BandComponent } from './band/band.component';
 
 const appRoutes: Routes = [
-    { path: 'formulario', component: FormularioComponent }
+    { path: '', loadChildren: () => import('./lista/lista.module').then(m => m.ListaModule)},
+    {path: 'band/:id', component: BandComponent},
+    { path: '**', loadChildren: () => import('./lista/lista.module').then(m => m.ListaModule)}
 ];
 
-export const appRoutingProviders: any[] = [];
-export const routing: ModuleWithProviders<any> = RouterModule.forRoot(appRoutes);
+@NgModule({
+    imports: [
+        RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules })
+    ],
+    exports: [
+        RouterModule
+    ]
+})
+export class AppRoutingModule{ }
+
 
